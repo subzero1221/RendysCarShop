@@ -3,7 +3,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 export async function signup(formData) {
-  const url = `http://localhost:8000/api/v1/users/signup`;
+  const url = `https://rendyscarshopexpress.onrender.com/api/v1/users/signup`;
   try {
     const res = await axios.post(url, formData);
     if (res.status === 201) {
@@ -17,7 +17,7 @@ export async function signup(formData) {
 }
 
 export async function updatePassword(curPassword, password, passwordConfirm) {
-  const url = `http://localhost:8000/api/v1/users/updatePassword`;
+  const url = `https://rendyscarshopexpress.onrender.com/api/v1/users/updatePassword`;
   const data = { curPassword, password, passwordConfirm };
   try {
     const res = await axios.patch(url, data);
@@ -32,7 +32,7 @@ export async function updatePassword(curPassword, password, passwordConfirm) {
 }
 
 export async function isLoggedIn() {
-  const url = `http://localhost:8000/api/v1/users/isLoggedIn`;
+  const url = `https://rendyscarshopexpress.onrender.com/api/v1/users/isLoggedIn`;
   try {
     const res = await axios.get(url);
 
@@ -40,7 +40,6 @@ export async function isLoggedIn() {
       return res.data.user;
     }
   } catch (error) {
-    
     return null;
   }
 }
@@ -51,33 +50,28 @@ export async function login(formData) {
     formObject[key] = value;
   });
 
-
-
-  const url = `http://localhost:8000/api/v1/users/login`;
+  const url = `https://rendyscarshopexpress.onrender.com/api/v1/users/login`;
   try {
     const res = await axios.post(url, formObject);
     if (res.status === 200) {
       return { user: res.data.user };
     }
   } catch (error) {
- 
     return { error: error.response?.data?.message || "Unexpected Error!" };
   }
 }
 
 export async function logout() {
-  const url = `http://localhost:8000/api/v1/users/logout`;
+  const url = `https://rendyscarshopexpress.onrender.com/api/v1/users/logout`;
   try {
     const res = await axios.post(url);
     if (res.status === 200) {
       return { msg: "Logged Out!" };
     }
   } catch (error) {
-   
     return { error: error.response || "Unxcpected Error!" };
   }
 }
-
 
 export async function updateProfile(
   name = undefined,
@@ -85,7 +79,7 @@ export async function updateProfile(
   photo = undefined,
   id
 ) {
-  const url = `http://localhost:8000/api/v1/users/updateProfile/${id}`;
+  const url = `https://rendyscarshopexpress.onrender.com/api/v1/users/updateProfile/${id}`;
 
   const formData = new FormData();
 
@@ -101,11 +95,9 @@ export async function updateProfile(
     });
 
     if (res.status === 200) {
-      
       return { message: "User update successful" };
     }
   } catch (error) {
-    
     return {
       error: error.response?.data || "Unexpected Error, try again later!",
     };
@@ -113,7 +105,7 @@ export async function updateProfile(
 }
 
 export async function getUserData(id) {
-  const url = `http://localhost:8000/api/v1/users/getUserData/${id}`;
+  const url = `https://rendyscarshopexpress.onrender.com/api/v1/users/getUserData/${id}`;
 
   try {
     const res = await axios.get(url);
@@ -121,7 +113,6 @@ export async function getUserData(id) {
       return res.data.user;
     }
   } catch (error) {
-   
     return { error: error.response || "Unxcpected Error!" };
   }
 }
