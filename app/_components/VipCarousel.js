@@ -10,7 +10,7 @@ export default async function VipCarCarousel() {
       <div className="flex animate-carousel">
         {vipCars.concat(vipCars).map((car, index) => (
           <Link
-            href={`/car/${car._id}`}
+            href={`/car-details/${car._id}`}
             key={index}
             className="flex-shrink-0 w-64 mx-2"
           >
