@@ -26,11 +26,9 @@ const LoginForm = () => {
     if (res.user) {
       toast.success("You are logged in!");
       setUser(res.user);
-
-      setTimeout(() => {
   router.push(`/profile/${res.user._id}`);
-    }, 1000);
-      router.refresh("/");
+  router.refresh("/");
+      
     } else if (res.error) {
       toast.error(res.error);
     }
