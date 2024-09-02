@@ -3,7 +3,7 @@
 import axios from "axios";
 
 export async function getCars(page) {
-  const url = `https://rendyscarshopexpress.onrender.com/api/v1/getCars?page=${page}&limit=9`;
+  const url = `https://rendyscarshopexpress.onrender.com/api/v1/cars/getCars?page=${page}&limit=9`;
   try {
     const res = await axios.get(url);
     if (res.status === 200) {
