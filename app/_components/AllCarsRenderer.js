@@ -3,20 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { getCars } from "../_utils/carActions";
 import { useEffect, useState } from "react";
+import Spinner from "./Spinner";
 
 export default function AllCarsRenderer({ page, setPage, setController }) {
   const [cars, setCars] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(
     function getCarsData() {
       async function getData() {
+        setLoading(true);
         const carsData = await getCars(page);
-        if (!carsData) {
-          setCars((car) => (car = carsData));
-          setController((c) => c != c);
-          return null;
-        }
-        setCars((car) => (car = carsData));
+        setCars(carsData);
+        setController((c) => !c);
+        setLoading(false);
       }
       getData();
     },
@@ -25,12 +25,17 @@ export default function AllCarsRenderer({ page, setPage, setController }) {
 
   function handleBack() {
     setPage((p) => p - 1);
-    setController((c) => (c = true));
+    setController((c) => true);
   }
 
   return (
     <div className="container px-4 py-8 mx-auto">
-      {cars ? (
+      {loading ? (
+        <div className="flex items-center justify-center h-screen">
+          {" "}
+          <Spinner />{" "}
+        </div>
+      ) : cars && cars.length > 0 ? (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {cars.map((car) => (
             <Link href={`/car-details/${car._id}`} key={car._id}>
@@ -86,7 +91,7 @@ export default function AllCarsRenderer({ page, setPage, setController }) {
           ))}
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center h-[50vh] space-y-8">
+        <div className="flex flex-col items-center justify-center h-[90vh] space-y-8">
           <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-200">
             No more cars currently
           </h1>
