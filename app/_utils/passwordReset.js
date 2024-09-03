@@ -2,7 +2,7 @@
 import axios from "axios";
 
 export async function forgotPassword(email) {
-  const url = `http://localhost:8000/api/v1/users/forgotPassword`;
+  const url = `https://rendyscarshopexpress-production.up.railway.app/api/v1/users/forgotPassword`;
   
 
   try {
@@ -20,7 +20,7 @@ export async function forgotPassword(email) {
 }
 
 export async function resetPassword(token, password, passwordConfirm) {
-  const url = `http://localhost:8000/api/v1/users/resetPassword/${token}`;
+  const url = `https://rendyscarshopexpress-production.up.railway.app/api/v1/users/resetPassword/${token}`;
   const data = { password, passwordConfirm };
   try {
     const res = await axios.post(url, data);
