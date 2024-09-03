@@ -4,7 +4,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 export async function buyVip(carId) {
-  const url = `https://rendyscarshopexpress.onrender.com/api/v1/vips/checkout-session/${carId}`;
+  const url = `https://rendyscarshopexpress-production.up.railway.app/api/v1/vips/checkout-session/${carId}`;
 
   try {
     const res = await axios.get(url);
