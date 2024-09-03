@@ -64,7 +64,7 @@ export async function login(formData) {
 }
 
 export async function logout() {
-  const url = `https://rendyscarshopexpress.onrender.com/api/v1/users/logout`;
+  const url = `https://rendyscarshopexpress-production.up.railway.app/api/v1/users/logout`;
   try {
     const res = await axios.post(url);
     if (res.status === 200) {
