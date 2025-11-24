@@ -55,7 +55,7 @@ export async function login(formData) {
 
   const url = `${BASE_URL}/api/v1/users/login`;
   try {
-    const res = await axios.post(url, formObject);
+    const res = await axios.post(url, formObject { withCredentials: true });
     if (res.status === 200) {
       return { user: res.data.user };
     }
