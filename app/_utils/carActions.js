@@ -1,9 +1,10 @@
 "use server";
+const BASE_URL="https://rendyscarshopexpress-production-9370.up.railway.app"
 
 import axios from "axios";
 
 export async function getCars(page) {
-  const url = `https://rendyscarshopexpress-production.up.railway.app/api/v1/cars/getCars?page=${page}&limit=9`;
+  const url = `${BASE_URL}/api/v1/cars/getCars?page=${page}&limit=9`;
   try {
     const res = await axios.get(url);
     if (res.status === 200) {
@@ -17,7 +18,7 @@ export async function getCars(page) {
 }
 
 export async function getCar(id) {
-  const url = `https://rendyscarshopexpress-production.up.railway.app/api/v1/cars/getCar/${id}`;
+  const url = `${BASE_URL}/api/v1/cars/getCar/${id}`;
   try {
     const res = await axios.get(url);
     if (res.status === 200) {
@@ -31,7 +32,7 @@ export async function getCar(id) {
 }
 
 export async function getFiltredCars(urlComplete) {
-  const url = `https://rendyscarshopexpress-production.up.railway.app/api/v1/getFiltredCars?${urlComplete}`;
+  const url = `${BASE_URL}/api/v1/getFiltredCars?${urlComplete}`;
 
   try {
     const res = await axios.get(url);
@@ -48,7 +49,7 @@ export async function getFiltredCars(urlComplete) {
 }
 
 export async function getMySales(id) {
-  const url = `https://rendyscarshopexpress-production.up.railway.app/api/v1/cars/getMySales/${id}`;
+  const url = `${BASE_URL}/api/v1/cars/getMySales/${id}`;
 
   try {
     const res = await axios.get(url);
@@ -67,7 +68,7 @@ export async function getMySales(id) {
 }
 
 export async function createCar({ formData, plainCarData }) {
-  const url = `https://rendyscarshopexpress-production.up.railway.app/api/v1/cars/createCar`;
+  const url = `${BASE_URL}/api/v1/cars/createCar`;
 
   try {
     Object.keys(plainCarData).forEach((key) => {
@@ -91,7 +92,7 @@ export async function createCar({ formData, plainCarData }) {
 }
 
 export async function getVipCars() {
-  const url = `https://rendyscarshopexpress-production.up.railway.app/api/v1/cars/vipCars`;
+  const url = `${BASE_URL}/api/v1/cars/vipCars`;
 
   try {
     const res = await axios.get(url);
