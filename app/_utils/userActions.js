@@ -111,7 +111,7 @@ export async function getUserData(id) {
   const url = `${BASE_URL}/api/v1/users/getUserData/${id}`;
 
   try {
-    const res = await axios.get(url);
+    const res = await axios.get(url, { withCredentials: true });
     if (res.status === 200) {
       return res.data.user;
     }
