@@ -1,8 +1,9 @@
 "use server";
 import axios from "axios";
+const BASE_URL="https://rendyscarshopexpress-production-9370.up.railway.app"
 
 export async function forgotPassword(email) {
-  const url = `https://rendyscarshopexpress-production.up.railway.app/api/v1/users/forgotPassword`;
+  const url = `${BASE_URL}/api/v1/users/forgotPassword`;
   
 
   try {
@@ -20,7 +21,7 @@ export async function forgotPassword(email) {
 }
 
 export async function resetPassword(token, password, passwordConfirm) {
-  const url = `https://rendyscarshopexpress-production.up.railway.app/api/v1/users/resetPassword/${token}`;
+  const url = `${BASE_URL}/api/v1/users/resetPassword/${token}`;
   const data = { password, passwordConfirm };
   try {
     const res = await axios.post(url, data);
