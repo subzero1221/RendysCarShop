@@ -8,7 +8,7 @@ axios.defaults.withCredentials = true;
 export async function signup(formData) {
   const url = `${BASE_URL}/api/v1/users/signup`;
   try {
-    const res = await axios.post(url, formData);
+    const res = await axios.post(url, formData, { withCredentials: true });
     if (res.status === 201) {
       return { user: res.data.user };
     }
@@ -67,7 +67,7 @@ export async function login(formData) {
 export async function logout() {
   const url = `${BASE_URL}/api/v1/users/logout`;
   try {
-    const res = await axios.post(url);
+    const res = await axios.post(url, { withCredentials: true });
     if (res.status === 200) {
       return { msg: "Logged Out!" };
     }
@@ -92,6 +92,7 @@ export async function updateProfile(
 
   try {
     const res = await axios.patch(url, formData, {
+      withCredentials: true,
       headers: {
         "Content-Type": "multipart/form-data",
       },
